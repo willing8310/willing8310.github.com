@@ -8,6 +8,9 @@ http://willing8310.github.com/pages.html
 http://willing8310.github.com/sitemap.txt
 http://willing8310.github.com/tags.html
 
-http://willing8310.github.com/2012/12/24/new-post
-http://willing8310.github.com/2012/12/24/hello-world
-http://willing8310.github.com/lessons/2011/12/29/jekyll-introduction
+http://willing8310.github.com/new-post
+http://willing8310.github.com/hello-world
+http://willing8310.github.com/blocks-programming
+http://willing8310.github.com/registration-progress-username
+http://willing8310.github.com/category-nsuserdefault
+http://willing8310.github.com/lessons/jekyll-introduction
