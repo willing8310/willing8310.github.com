@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>【细节】注册时如何“猜到”用户要填写的用户名</title>
+    
+    <meta name="author" content="Wilson Lin">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Wilson Lin's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>【细节】注册时如何“猜到”用户要填写的用户名 <small>Supporting tagline</small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    用户第一次在我们的应用中注册时，需要填写用户名，那么，有没有可能自动获取到用户常用的用户名并自动填写到输入框呢？答案是肯定的（尼妹，没可能的话还要这篇文章做什么），可以利用UIDevice的name属性获得。
+
+翻开苹果的开发文档，我们发现UIDevice类有个只读的name属性。这个name属性就是我们设备上“设置 》通用 》 关于本机 》名称”上显示的名称。我的设备上显示是【“wilson”的 iPhone】。呵呵，大家知道，我的英文名就是wilson。如果在注册的过程中用户名输入框里面的默认值是wilson，我会感觉很贴心。
+
+很简单，我们通过[UIDevice currentDevice].name就能获取到【“wilson"的iPhone】了，然后再通过正则把其中的”引号、的、iPhone“等字符替换掉，就能获得【wilson】了。当然，其他人的name属性可能还有"iPad、英文的引用、's"等字符，也需要替换掉，为此，我写了个例子放在<a href="https://github.com/willing8310/WLAutofillUsername">Github</a> 上供参考。在里面，我把获取默认用户名的方法写在UIDevice的Category方法，使用时只需调用[[UIDevice currentDevice] username]语句就能得到默认用户名。
+
+另外，细细声说一句，如果你把这个用户名放到通讯录里面去扫描，说不定还能扫到机主的邮箱和电话号码。邪恶了，这事不能说得太细，哥只能带你到这里了。:)
+
+参考：<a href="http://www.quora.com/Square-Inc-1/How-does-Square-know-my-name-in-their-apps-registration-process">http://www.quora.com/Square-Inc-1/How-does-Square-know-my-name-in-their-apps-registration-process</a>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/category-nsuserdefault" title="巧用Category隐藏NSUserDefault细节">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/blocks-programming" title="Block编程指南一：Block入门">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'wilsonlin'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>12 December 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#app-ref">app <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#iOS-ref">iOS <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#UIDevice-ref">UIDevice <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#注册-ref">注册 <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#用户名-ref">用户名 <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Wilson Lin 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+  </body>
+</html>
+
